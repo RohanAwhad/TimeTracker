@@ -8,6 +8,9 @@ pytest = "*"
 
 [packages]
 bcrypt = "*"
+sqlalchemy = "*"
+pymysql = "*"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.6"
