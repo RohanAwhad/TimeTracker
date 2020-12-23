@@ -12,3 +12,15 @@ class User:
     @property
     def first_name(self):
         return self._first_name
+
+    @property
+    def last_name(self):
+        return self._last_name
+
+    @property
+    def email_id(self):
+        return self._email_id
+
+    @property
+    def username(self):
+        return self._username
