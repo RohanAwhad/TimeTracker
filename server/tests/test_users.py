@@ -19,3 +19,11 @@ def test_get_first_name():
 
 def test_get_last_name():
     assert max_payne.last_name == user_data["last_name"]
+
+
+def test_get_email_id():
+    assert max_payne.email_id == user_data["email_id"]
+
+
+def test_get_username():
+    assert max_payne.username == user_data["username"]
