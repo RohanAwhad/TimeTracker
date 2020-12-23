@@ -36,3 +36,11 @@ def test_first_name_fail():
 
     with pytest.raises(Exception):
         max_payne.set_user(**fn_ip)
+
+
+def test_last_name_fail():
+    fn_ip = user_data.copy()
+    fn_ip["last_name"] = "Payne_21"
+
+    with pytest.raises(Exception):
+        max_payne.set_user(**fn_ip)
