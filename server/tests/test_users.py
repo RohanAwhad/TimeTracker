@@ -44,3 +44,25 @@ def test_last_name_fail():
 
     with pytest.raises(Exception):
         max_payne.set_user(**fn_ip)
+
+
+def test_email_fail():
+    fn_ip = user_data.copy()
+    invalid_emails_list = [
+        "lolol",
+        "akldjf.laksfj@kldaj",
+        "@kldaj",
+        "@kldaj.asdl",
+        "@kldaj.a123674ds",
+        "dsfdsf@kldaj.a123674ds",
+        "@kl8293764.asdl",
+        "asfdf@kl8293764.asdl",
+        "asfdf2342@adsfd.asdf",
+        "asjkfdhg_kajdsfgh_AKSJGD@alkdjf.kd",
+        "asjkfdhg_kajdsfgh_asjkfdhg_kajdsfgh_asjkfdhg_kajdsfgh_jkahgesdfjkhad.gsfjkasdgfkjhsdbzf_hja@alkdjf.kd",
+    ]
+
+    with pytest.raises(Exception):
+        for email in invalid_emails_list:
+            fn_ip["email_id"] = email
+            max_payne.set_user(**fn_ip)
