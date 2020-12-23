@@ -19,7 +19,7 @@ class User:
         if self.is_valid_username(username):
             self._username = username
         if self.is_valid_password(password):
-            self._password = self.hash(password)
+            self._password = password
 
     @property
     def first_name(self):
@@ -63,10 +63,3 @@ class User:
         if re.search(pat, password) is None:
             raise Exception(f"{password} is not a valid password")
         return True
-
-    def hash(self, string_to_hash):
-        import bcrypt
-
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(string_to_hash.encode("utf-8"), salt)
-        return hashed_password.decode()
