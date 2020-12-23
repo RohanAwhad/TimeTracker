@@ -1,5 +1,6 @@
 from src.models.user import User
 from warnings import warn
+import pytest
 
 user_data = {
     "first_name": "Max",
@@ -27,3 +28,11 @@ def test_get_email_id():
 
 def test_get_username():
     assert max_payne.username == user_data["username"]
+
+
+def test_first_name_fail():
+    fn_ip = user_data.copy()
+    fn_ip["first_name"] = "Max_21"
+
+    with pytest.raises(Exception):
+        max_payne.set_user(**fn_ip)
