@@ -1,6 +1,8 @@
 from src.models.user import User
+from src.hasher import Hasher
 from warnings import warn
 import pytest
+import re
 
 user_data = {
     "first_name": "Max",
@@ -105,3 +107,11 @@ def test_password_fail():
         for password in invalid_passwords_list:
             fn_ip["password"] = password
             max_payne.set_user(**fn_ip)
+
+
+def test_hashing():
+    op = Hasher.hash(user_data["password"])
+    hash_reg = r"[$]2[a-z][$][0-9]+[$][a-zA-Z0-9]+"
+    assert re.search(hash_reg, op) is not None
+    assert not (op == user_data["password"])
+    assert type(op) == str
