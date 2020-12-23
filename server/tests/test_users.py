@@ -15,3 +15,7 @@ max_payne = User(**user_data)
 
 def test_get_first_name():
     assert max_payne.first_name == user_data["first_name"]
+
+
+def test_get_last_name():
+    assert max_payne.last_name == user_data["last_name"]
