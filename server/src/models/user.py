@@ -19,7 +19,7 @@ class User:
         if self.is_valid_username(username):
             self._username = username
         if self.is_valid_password(password):
-            self._password = password
+            self._password = self.hash(password)
 
     @property
     def first_name(self):
@@ -50,6 +50,13 @@ class User:
             raise Exception(f"{email_id} is not a valid email id")
         return True
 
+    def is_valid_username(self, username):
+        reg = r"[a-zA-Z0-9_]{5,20}$"
+        pat = re.compile(reg)
+        if re.search(pat, username) is None:
+            raise Exception(f"{username} is not a valid username")
+        return True
+
     def is_valid_password(self, password):
         reg = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$_!%*#?&])[A-Za-z\d@$_!#%*?&]{6,20}$"
         pat = re.compile(reg)
@@ -57,9 +64,9 @@ class User:
             raise Exception(f"{password} is not a valid password")
         return True
 
-    def is_valid_username(self, username):
-        reg = r"[a-zA-Z0-9_]{5,20}$"
-        pat = re.compile(reg)
-        if re.search(pat, username) is None:
-            raise Exception(f"{username} is not a valid username")
-        return True
+    def hash(self, string_to_hash):
+        import bcrypt
+
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(string_to_hash.encode("utf-8"), salt)
+        return hashed_password.decode()
