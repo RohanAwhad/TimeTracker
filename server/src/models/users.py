@@ -1,5 +1,5 @@
 class User:
-    def __init__(first_name, last_name, email_id, password, username):
+    def __init__(self, first_name, last_name, email_id, password, username):
         self.set_user(first_name, last_name, email_id, password, username)
 
     def set_user(self, first_name, last_name, email_id, password, username):
