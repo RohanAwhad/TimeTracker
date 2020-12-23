@@ -82,3 +82,26 @@ def test_username_fail():
         for username in invalid_usernames_list:
             fn_ip["username"] = username
             max_payne.set_user(**fn_ip)
+
+
+def test_password_fail():
+    fn_ip = user_data.copy()
+
+    invalid_passwords_list = [
+        "",
+        "123",
+        "pass",
+        "password",
+        "password123",
+        "passball_123",  # Needs uppercase with it
+        "Temp",
+        "Password$",
+        "MAX@097",  # no lowercase letters
+        "1234543@",
+        "Password_is_Too_Strong_For_theDB@27986500",  # Too long
+    ]
+
+    with pytest.raises(Exception):
+        for password in invalid_passwords_list:
+            fn_ip["password"] = password
+            max_payne.set_user(**fn_ip)
