@@ -66,3 +66,19 @@ def test_email_fail():
         for email in invalid_emails_list:
             fn_ip["email_id"] = email
             max_payne.set_user(**fn_ip)
+
+
+def test_username_fail():
+    fn_ip = user_data.copy()
+
+    invalid_usernames_list = [
+        "MaxPayne@",  # Only '_' is allowed
+        "Max Payne",  # No spaces
+        "289374",
+        "M_2",
+    ]
+
+    with pytest.raises(Exception):
+        for username in invalid_usernames_list:
+            fn_ip["username"] = username
+            max_payne.set_user(**fn_ip)
