@@ -7,7 +7,12 @@ user_data = {
     "username": "maxpayne_021",
     "password": "Max@123",
 }
+max_payne = None
 
 
 def test_create_user():
     max_payne = User(**user_data)
+
+
+# def test_get_first_name():
+#     assert max_payne
