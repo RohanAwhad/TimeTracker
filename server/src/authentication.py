@@ -8,12 +8,6 @@ from src.validations import (
 )
 
 
-def hashing(string_to_hash):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(string_to_hash.encode("utf-8"), salt)
-    return hashed_password.decode()
-
-
 def signup(first_name, last_name, email_id, password, username):
     validate_first_last_name(first_name)
     validate_first_last_name(last_name)
