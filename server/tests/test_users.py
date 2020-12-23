@@ -1,8 +1,6 @@
 from src.models.user import User
 from src.hasher import Hasher
-from warnings import warn
 import pytest
-import re
 
 user_data = {
     "first_name": "Max",
