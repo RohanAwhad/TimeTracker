@@ -10,6 +10,7 @@ user_data = {
     "email_id": "max.payne_21@rockstar.com",
     "username": "maxpayne_021",
     "password": "Max@123",
+    "hasher": Hasher,
 }
 
 

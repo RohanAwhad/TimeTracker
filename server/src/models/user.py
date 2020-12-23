@@ -2,14 +2,14 @@ import re
 
 
 class User:
-    def __init__(self, first_name, last_name, email_id, password, username):
-        self.set_user(first_name, last_name, email_id, password, username)
+    def __init__(self, first_name, last_name, email_id, password, username, hasher):
+        self.set_user(first_name, last_name, email_id, password, username, hasher)
         self._NAME_LEN = (2, 20)
         self._EMAIL_LEN = (6, 65)
         self._PASSWORD_LEN = (6, 20)
         self._USERNAME_LEN = (6, 20)
 
-    def set_user(self, first_name, last_name, email_id, password, username, **kwargs):
+    def set_user(self, first_name, last_name, email_id, password, username, hasher):
         if self.is_valid_first_last_name(first_name):
             self._first_name = first_name
         if self.is_valid_first_last_name(last_name):
