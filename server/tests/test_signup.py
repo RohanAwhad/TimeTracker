@@ -1,3 +1,4 @@
+"""
 import bcrypt
 import os
 import pytest
@@ -152,3 +153,5 @@ def test_hashing():
     assert re.search(hash_reg, op) is not None
     assert not (op == ip["password"])
     assert type(op) == str
+
+"""
