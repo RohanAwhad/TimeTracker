@@ -2,9 +2,7 @@ import bcrypt
 
 
 class Hasher:
-    def __init__(self):
-        pass
-
+    @staticmethod
     def hash(self, string_to_hash):
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(string_to_hash.encode("utf-8"), salt)
