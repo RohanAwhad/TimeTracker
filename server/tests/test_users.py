@@ -1,4 +1,5 @@
 from src.models.user import User
+from warnings import warn
 
 user_data = {
     "first_name": "Max",
@@ -7,12 +8,10 @@ user_data = {
     "username": "maxpayne_021",
     "password": "Max@123",
 }
-max_payne = None
 
 
-def test_create_user():
-    max_payne = User(**user_data)
+max_payne = User(**user_data)
 
 
-# def test_get_first_name():
-#     assert max_payne
+def test_get_first_name():
+    warn(max_payne.first_name)
