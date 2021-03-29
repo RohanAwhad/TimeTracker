@@ -1,4 +1,5 @@
-const staticCacheName = 'site-static';
+const staticCacheName = 'site-static-v2';
+const dynamicCacheName = 'site-dynamic'
 const assets = [
     '/',
     '/index.html',
@@ -22,14 +23,29 @@ self.addEventListener('install', evt => {
 // activate event
 self.addEventListener('activate', evt => {
     console.log('sw activated');
+    evt.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(keys
+                .filter(key => key !== staticCacheName)
+                .map(key => caches.delete(key))    
+            )
+        })
+    )
 })
 
 // fetch event
 self.addEventListener('fetch', evt => {
-    console.log('fetch event', evt);
-    evt.respondWith(
-        caches.match(evt.request).then(res => {
-            return res || fetch(evt.request);
-        })
-    )
+    // console.log('fetch event', evt);
+    // evt.respondWith(
+    //     caches.match(evt.request).then(res => {
+    //         return res || fetch(evt.request).then(fetchRes => {
+    //             return caches.open(dynamicCacheName).then(cache => {
+    //                 cache.put(evt.request.url, fetchRes.clone())
+    //                 limitCacheSize(dynamicCacheName, 15)
+    //                 return fetchRes
+    //             })
+    //         });
+    //     })
+    // )
+    
 })
