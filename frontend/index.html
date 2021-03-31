@@ -81,10 +81,14 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
         const db = firebase.firestore();
+        db.enablePersistence()
+            .catch(err => {
+                console.log('persistence failed', err)
+            })
         </script>
 
         <script src="/js/app.js"></script>
-        <script src="/js/db.js"></script>
+        <!-- <script src="/js/db.js"></script> -->
         <script src="/js/home.js"></script>
     </body>
 </html>
